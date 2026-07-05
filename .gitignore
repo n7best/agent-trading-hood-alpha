@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+.env
+journal/*.csv
+reports/*.json
+reports/*.txt
+data/live_quotes/*.json
+data/raw/*.json
+reports/**/*.md

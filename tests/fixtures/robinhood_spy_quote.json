@@ -1,0 +1,33 @@
+{
+  "data": {
+    "results": [
+      {
+        "quote": {
+          "symbol": "SPY",
+          "last_trade_price": "743.490000",
+          "venue_last_trade_time": "2026-06-08T15:49:33.868764675Z",
+          "last_non_reg_trade_price": null,
+          "venue_last_non_reg_trade_time": null,
+          "adjusted_previous_close": "737.550000",
+          "previous_close": "737.550000",
+          "previous_close_date": "2026-06-05",
+          "bid_price": "743.500000",
+          "venue_bid_time": "2026-06-08T15:49:33.4590006Z",
+          "ask_price": "743.530000",
+          "venue_ask_time": "2026-06-08T15:49:33.4590006Z",
+          "has_traded": true,
+          "state": "active"
+        },
+        "close": {
+          "symbol": "SPY",
+          "date": "2026-06-05",
+          "price": "737.55",
+          "interpolated": false,
+          "source": "sip-list-exchange-close"
+        }
+      }
+    ]
+  },
+  "guide": "Recorded Robinhood MCP get_equity_quotes response shape for parser tests."
+}
+

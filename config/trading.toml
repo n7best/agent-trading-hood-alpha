@@ -1,0 +1,79 @@
+[account]
+initial_cash = 500.0
+monthly_profit_target = 100.0
+mode = "paper"
+
+[risk]
+max_risk_per_trade_pct = 0.01
+max_position_value_pct = 0.25
+max_daily_loss_pct = 0.03
+max_monthly_loss_pct = 0.08
+stop_loss_pct = 0.05
+min_cash_buffer_pct = 0.05
+allow_fractional = true
+
+[strategy]
+name = "moving_average_crossover"
+fast_window = 5
+slow_window = 15
+
+[pair_strategy]
+name = "soxl_soxs_rules"
+fast_window = 5
+slow_window = 20
+min_confirmation_return_pct = 0.5
+max_chase_return_pct = 8.0
+order_amount = 25.0
+stop_loss_pct = 0.05
+take_profit_pct = 0.08
+max_daily_notional = 300.0
+max_monthly_realized_loss = 100.0
+
+[daytrade_strategy]
+name = "aggressive_soxl_soxs_daytrade"
+lookback_window = 2
+trend_window = 8
+min_session_move_pct = 0.25
+min_prior_return_pct = 3.0
+max_session_move_pct = 18.0
+live_entry_source = "premarket_confirmed_momentum"
+require_fresh_history_for_live_entries = false
+allow_stale_plan_live_fallback = true
+stale_plan_min_session_move_pct = 4.0
+defensive_min_session_move_pct = 2.0
+order_amount = 100.0
+stop_loss_pct = 0.03
+take_profit_pct = 0.08
+runner_enabled = true
+initial_take_profit_pct = 0.03
+initial_exit_fraction = 0.5
+runner_stop_loss_pct = 0.0
+runner_take_profit_pct = 0.08
+runner_trailing_stop_pct = 0.02
+max_daily_notional = 300.0
+max_monthly_realized_loss = 100.0
+
+[data]
+source = "robinhood_mcp"
+quote_snapshot_path = "data/live_quotes/latest.json"
+csv_path = "data/sample_prices.csv"
+symbols = ["SOXL", "SOXS"]
+
+[journal]
+path = "journal/trades.csv"
+
+[authorization]
+enabled = true
+account_nickname = "Agentic"
+allowed_account_last4 = "6375"
+symbols = ["SOXL", "SOXS"]
+market_hours = ["regular_hours", "extended_hours"]
+time_in_force = "gfd"
+skip_review = true
+max_buy_order_usd = 300.0
+sell_to_close_symbols = ["SOXL", "SOXS"]
+max_opening_trades_per_day = 100
+max_daily_notional_usd = 300.0
+max_monthly_realized_loss_usd = 100.0
+allow_options = false
+allow_short_selling = false
