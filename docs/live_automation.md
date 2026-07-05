@@ -4,7 +4,7 @@ Current automations:
 
 - `SOXL/SOXS premarket plan`: runs at 8:45 AM ET on market weekdays and writes the session setup.
 - `SOXL/SOXS adaptive trade monitor`: starts at the 9:30 AM ET regular-session open on market weekdays, then runs every 5, 10, or 15 minutes during regular hours based on exposure and premarket risk mode.
-- `SOXL/SOXS trading rules check`: paused detached local cron, scheduled for 9:35 AM ET on market weekdays.
+- `SOXL/SOXS trading rules check`: runs at 9:35 AM ET on market weekdays as a local cron automation.
 - `SOXL/SOXS daily review`: runs at 4:30 PM ET on market weekdays in the current thread.
 
 Automation schedules and trading-date checks use America/New_York market time. If UTC and Eastern dates differ, use the Eastern market date for same-day orders, daily notional, and authorization expiry.
