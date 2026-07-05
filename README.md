@@ -14,6 +14,7 @@ The stated monthly survival target is `$100`, which is a `20%` monthly return on
 - Backtest engine with fills, equity curve, drawdown, win rate, and profit factor.
 - Trade journal helpers.
 - CLI commands for checking the account plan, reading MCP quotes, sizing live plans, backtesting, downloading historical data, and summarizing the journal.
+- New-device and always-on Codex setup instructions in `docs/new_device_setup.md`.
 - Unit tests that run without external services.
 
 ## Quick Start
@@ -54,6 +55,18 @@ Run tests:
 ```bash
 python -m unittest discover -s tests
 ```
+
+## Always-On Codex Setup
+
+For a new Mac that will host Codex continuously, use `docs/new_device_setup.md` first. That guide covers cloning this repo, Python setup, Robinhood MCP login, available repo and MCP tools, and the corresponding scheduled automation setup.
+
+Instruction sync rule:
+
+```bash
+git pull --ff-only origin main
+```
+
+Run that before every manual or scheduled workflow. If any instruction, schedule, setup, or authorization guidance changes, commit and push it to `origin/main` before relying on the changed workflow. Generated quote snapshots and reports stay local unless explicitly requested.
 
 ## Optional Setup
 

@@ -9,6 +9,18 @@ Current automations:
 
 Automation schedules and trading-date checks use America/New_York market time. If UTC and Eastern dates differ, use the Eastern market date for same-day orders, daily notional, and authorization expiry.
 
+## Instruction And Git Sync
+
+Before every scheduled automation run, pull the latest repo instructions:
+
+```bash
+git pull --ff-only origin main
+```
+
+If the pull fails, the automation must stop before any market or broker action and report the local state that blocked synchronization. After a successful pull, read `README.md`, `docs/new_device_setup.md`, this file, `scripts/daily_routine.md`, `scripts/robinhood_mcp_workflow.md`, `docs/soxl_soxs_rules.md`, and `config/trading.toml`.
+
+Any future edit to workflow instructions, schedules, setup docs, or authorization guidance must be committed and pushed to `origin/main` before a scheduled run relies on it. Generated reports and quote snapshots should remain local unless the user explicitly asks to publish them.
+
 ## Daily Session Boundary
 
 Start a new Codex trading session for each Eastern trading date. Do not keep the same live-monitor conversation running across multiple trading days. Name the session with the Eastern market date and trading purpose:

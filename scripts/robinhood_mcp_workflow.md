@@ -2,6 +2,18 @@
 
 Use this workflow for current market data and any future live trading path.
 
+## Git Sync
+
+Before using Robinhood MCP tools for this repo, run:
+
+```bash
+git pull --ff-only origin main
+```
+
+If the pull fails, stop before any market or broker action. Read the current repo instructions after a successful pull, especially `docs/new_device_setup.md`, `docs/live_automation.md`, this file, and `config/trading.toml`.
+
+Instruction, schedule, setup, and authorization-guidance changes must be committed and pushed to `origin/main` before future scheduled runs rely on them.
+
 ## Session Boundary
 
 Use a new Codex trading session for each Eastern trading date. The session must not rely on prior chat context for broker state, daily notional, monthly realized-loss usage, authorization, premarket risk mode, or open-order status.
