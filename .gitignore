@@ -6,9 +6,3 @@ __pycache__/
 .venv/
 venv/
 .env
-journal/*.csv
-reports/*.json
-reports/*.txt
-data/live_quotes/*.json
-data/raw/*.json
-reports/**/*.md
