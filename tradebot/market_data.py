@@ -97,11 +97,11 @@ class RobinhoodMCPMarketData:
                 raise ValueError(f"Missing last trade timestamp for {symbol}")
             as_of = regular_time
 
-        previous_close = None
-        if isinstance(close, dict):
-            previous_close = _optional_float(close.get("price"))
+        previous_close = _optional_float(quote.get("adjusted_previous_close"))
         if previous_close is None:
-            previous_close = _optional_float(quote.get("adjusted_previous_close"))
+            previous_close = _optional_float(quote.get("previous_close"))
+        if previous_close is None and isinstance(close, dict):
+            previous_close = _optional_float(close.get("price"))
 
         return LiveQuote(
             symbol=symbol,

@@ -43,6 +43,37 @@ class RobinhoodMCPMarketDataTests(unittest.TestCase):
         self.assertEqual(quote.price, 10.25)
         self.assertEqual(quote.as_of, datetime(2026, 6, 8, 20, 5, tzinfo=timezone.utc))
 
+    def test_uses_adjusted_previous_close_for_split_adjusted_quotes(self):
+        payload = {
+            "data": {
+                "results": [
+                    {
+                        "quote": {
+                            "symbol": "SOXS",
+                            "last_trade_price": "45.930000",
+                            "venue_last_trade_time": "2026-07-15T19:59:59.775087197Z",
+                            "last_non_reg_trade_price": "45.960000",
+                            "venue_last_non_reg_trade_time": "2026-07-15T20:32:27.512927877Z",
+                            "adjusted_previous_close": "42.800000",
+                            "previous_close": "4.280000",
+                            "has_traded": True,
+                            "state": "active",
+                        },
+                        "close": {
+                            "symbol": "SOXS",
+                            "date": "2026-07-14",
+                            "price": "4.28",
+                            "source": "consolidated-unadjusted",
+                        },
+                    }
+                ]
+            }
+        }
+
+        quote = RobinhoodMCPMarketData.parse_quotes(payload)["SOXS"]
+        self.assertAlmostEqual(quote.previous_close, 42.8)
+        self.assertAlmostEqual(quote.daily_change_pct, 7.383177570093466)
+
     def test_parse_robinhood_time_returns_utc(self):
         parsed = parse_robinhood_time("2026-06-08T15:49:33.868764675Z")
         self.assertIsNotNone(parsed)
@@ -51,4 +82,3 @@ class RobinhoodMCPMarketDataTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
