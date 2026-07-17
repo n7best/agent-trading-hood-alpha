@@ -62,8 +62,11 @@ These rules are for the adaptive live monitor. The live monitor and daily-histor
 - In stale-plan risk mode, skip opening buys unless `allow_stale_plan_live_fallback = true`, fresh Robinhood quotes show `abs(SOXL session move) >= 4.0%`, the move remains below the max-session-move cap, and all broker/account/order/authorization/monthly-loss/tradability/exit checks pass.
 - Skip when `abs(SOXL session move) > 18%`.
 - Order size: `$100`, allowing multiple attempts while staying under the daily cap.
-- Protective stop: `1%`.
-- Take profit: `1%`.
+- Protective stop: `3%`.
+- Initial runner take profit: exit `50%` at `3%`.
+- Runner stop: move remaining shares to breakeven after the initial take-profit fill.
+- Final runner target: `8%`.
+- Runner trailing stop: `2%`.
 - Daily notional cap: `$300`, so the default sizing permits up to three opening attempts per day.
 - Monthly realized loss cap: `$100`.
 
